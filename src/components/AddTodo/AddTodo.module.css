@@ -1,4 +1,5 @@
-.todo {
+.addTodo{
+    height: 72px;
     font-size: 32px;
 
     display: flex;
@@ -11,27 +12,23 @@
     border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
 
-.todoImg {
+.addTodoImg{
     width: 36px;
     height: 36px;
+    background-image: url(../../assets/images/plus.png);
+    background-size: cover;
+    background-repeat: no-repeat;
 
-    border: 1px solid rgba(0, 0, 0, 0.2);
-    border-radius: 50%;
-
+    opacity: 0.2;
     cursor: pointer;
 }
 
-.todoImg__done {
-    background-image: url(../../assets/images/check-mark.png);
-    background-size: cover;
-    background-repeat: no-repeat;
-}
+.addTodoInput{
+    outline: none;
+    border: none;
 
-/* .todoText{
-
-} */
-
-.todoText__done {
+    font-size: 30px;
+    font-style: italic;
+    
     opacity: 0.2;
-    text-decoration: line-through;
 }
