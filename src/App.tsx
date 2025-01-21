@@ -7,7 +7,7 @@ import { todoProps } from './components/Todo/Todo.tsx';
 import TodosList from './components/TodosList/TodosList.tsx';
 import Footer from './components/Footer/Footer.tsx';
 
-import { getTodos } from './utils/TodoService.ts';
+import { getTodos, createTodo } from './utils/TodoService.ts';
 
 function App() {
 
@@ -25,34 +25,14 @@ function App() {
         },
     ])
     const [selectedCategory, setSelectedCategory] = React.useState<string>('All')
-
     const curTodos = getTodos(todos, selectedCategory)
-
-    const createTodo = (body: string): void => {
-        try {
-            const newTodo: todoProps = {
-                id: Math.random(),
-                body: body,
-                done: false
-            }
-            if (!body) {
-                alert('Введите описание todo')
-                throw new Error('Текст не может быть путсым')
-            } else {
-                setTodos([newTodo, ...todos])
-                setTodoBody('')
-            }
-        } catch (err) {
-            console.error(err)
-        }
-    }
 
     return (
         <div className="App">
             <Header>todos</Header>
             <TodosList
                 setTodos={setTodos}
-                createTodo={createTodo}
+                createTodo={(body: string) => createTodo(body, todos, setTodos, setTodoBody)}
                 todos={curTodos}
                 todoBody={todoBody}
                 setTodoBody={setTodoBody}
