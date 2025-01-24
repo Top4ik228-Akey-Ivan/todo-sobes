@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/todo-sobes/static/css/main.baae9fdf.css",
+    "main.js": "/todo-sobes/static/js/main.ff92e22b.js",
+    "index.html": "/todo-sobes/index.html",
+    "main.baae9fdf.css.map": "/todo-sobes/static/css/main.baae9fdf.css.map",
+    "main.ff92e22b.js.map": "/todo-sobes/static/js/main.ff92e22b.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.baae9fdf.css",
+    "static/js/main.ff92e22b.js"
+  ]
+}
