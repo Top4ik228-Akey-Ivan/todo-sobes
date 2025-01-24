@@ -25,6 +25,11 @@
     <img src="https://img.shields.io/badge/-REACT-000000?style=for-the-badge&logo=REACT" alt="react"/>
 </div>
 
+## Деплой проекта
+Проект доступен на guthub pages по ссылке ниже
+
+### [`TodoSobes`](https://top4ik228-akey-ivan.github.io/todo-sobes/)
+
 ## Запуск проекта
 ### Для запуска проекта 
 ### `npm i; npm run start`
