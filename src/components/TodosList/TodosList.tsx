@@ -13,8 +13,7 @@ const TodosList: React.FC<TodosListProps> = ({ todos, setTodos }) => {
     return (
         <div>
             <AnimatePresence>
-                {todos.length ?
-                    (
+                {todos.length &&
                         todos.map((todo) =>
                             <Todo
                                 todo={todo}
@@ -22,9 +21,6 @@ const TodosList: React.FC<TodosListProps> = ({ todos, setTodos }) => {
                                 setTodos={setTodos}
                             />
                         )
-                    ) : (
-                        <p>Активных задач нет</p>
-                    )
                 }
             </AnimatePresence>
         </div>
