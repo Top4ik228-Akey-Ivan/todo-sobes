@@ -3,12 +3,18 @@
 
     display: flex;
     align-items: center;
-    gap: 20px;
+    justify-content: space-between;
 
     padding: 16px;
 
     background-color: white;
     border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.todoBox{
+    display: flex;
+    align-items: center;
+    gap:20px;
 }
 
 .todoImg {
@@ -21,17 +27,33 @@
     cursor: pointer;
 }
 
-.todoImg__done {
-    background-image: url(../../assets/images/check-mark.png);
-    background-size: cover;
-    background-repeat: no-repeat;
+.desc{
+    font-size: 12px;
+    opacity: .5;
 }
-
-/* .todoText{
-
-} */
 
 .todoText__done {
     opacity: 0.2;
     text-decoration: line-through;
+}
+
+.deleteBtnBox{
+    text-align: right;
+}
+
+.deleteBtn{
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    transition: 0.2s linear;
+}
+
+.deleteBtn:hover{
+    scale: 1.3;
+}
+
+@media (max-width: 600px) {
+    .todo {
+        font-size: 20px;
+    }
 }

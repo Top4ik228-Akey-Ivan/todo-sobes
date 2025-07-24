@@ -1,34 +1,32 @@
 import React from "react";
-import Todo, { todoProps } from "../Todo/Todo.tsx";
-import AddTodo from "../AddTodo/AddTodo.tsx";
+import Todo from "../Todo/Todo.tsx";
+import { ITodo } from "../../types.ts";
+import { AnimatePresence } from "framer-motion";
 
-interface TodosListProps {
-    todos: todoProps[],
-    todoBody: string,
-    setTodoBody: (newBody: string) => void,
-    createTodo: (text: string) => void,
-    setTodos: (todos: todoProps[]) => void,
+export interface TodosListProps {
+    todos: ITodo[];
+    setTodos: React.Dispatch<React.SetStateAction<ITodo[]>>;
 }
 
-const TodosList: React.FC<TodosListProps> = ({ todos, todoBody, setTodoBody, createTodo, setTodos }) => {
+const TodosList: React.FC<TodosListProps> = ({ todos, setTodos }) => {
+
     return (
         <div>
-            <AddTodo
-                createTodo={createTodo}
-                todoBody={todoBody}
-                setTodoBody={setTodoBody}
-            />
-            {todos.map((todo) =>
-                <Todo
-                    todo={todo}
-                    todos={todos}
-                    setTodos={setTodos}
-                    key={todo.id}
-                    id={todo.id}
-                    body={todo.body}
-                    done={todo.done}
-                />
-            )}
+            <AnimatePresence>
+                {todos.length ?
+                    (
+                        todos.map((todo) =>
+                            <Todo
+                                todo={todo}
+                                key={todo.id}
+                                setTodos={setTodos}
+                            />
+                        )
+                    ) : (
+                        <p>Активных задач нет</p>
+                    )
+                }
+            </AnimatePresence>
         </div>
     );
 }

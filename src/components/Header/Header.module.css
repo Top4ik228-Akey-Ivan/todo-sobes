@@ -2,6 +2,19 @@
     font-size: 96px;
     text-align: center;
 
-    color: coral;
+    color: #ff7f50;
     opacity: 0.3;
+}
+
+.header {
+    font-size: 96px;
+    text-align: center;
+    color: rgb(255, 128, 82);
+    opacity: 0.3;
+}
+
+@media (max-width: 600px) {
+    .header {
+        font-size: 48px;
+    }
 }

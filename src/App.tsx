@@ -1,47 +1,53 @@
-import React from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 
 import './App.css';
 
 import Header from './components/Header/Header.tsx'
-import { todoProps } from './components/Todo/Todo.tsx';
 import TodosList from './components/TodosList/TodosList.tsx';
+import { filterStatus, ITodo } from './types.ts';
+import AddTodo from './components/AddTodo/AddTodo.tsx';
 import Footer from './components/Footer/Footer.tsx';
-
-import { getTodos, createTodo } from './utils/TodoService.ts';
 
 function App() {
 
-    const [todoBody, setTodoBody] = React.useState<string>('')
-    const [todos, setTodos] = React.useState<todoProps[]>([
-        {
-            id: 1,
-            body: 'add todo',
-            done: false,
-        },
-        {
-            id: 2,
-            body: 'go to the gym',
-            done: true,
-        },
-    ])
-    const [selectedCategory, setSelectedCategory] = React.useState<string>('All')
-    const curTodos = getTodos(todos, selectedCategory)
+    const [todos, setTodos] = useState<ITodo[]>([]);
+    const [filterStatus, setFilterStatus] = useState<filterStatus>('all');
+
+    const filteredTodos: ITodo[] = useMemo(() => {
+        return filterStatus === 'all'
+            ? todos
+            : todos.filter(todo => todo.status === filterStatus);
+    }, [todos, filterStatus]);
+
+
+    useEffect(() => {
+        const data = localStorage.getItem('todos');
+        if (data) {
+            try {
+                const parsedData = JSON.parse(data);
+                if (Array.isArray(parsedData)) {
+                    setTodos(parsedData);
+                }
+            } catch (e) {
+                console.error('Ошибка при парсинге данных из localStorage:', e);
+            }
+        }
+    }, []);
 
     return (
         <div className="App">
             <Header>todos</Header>
-            <TodosList
+            <AddTodo
                 setTodos={setTodos}
-                createTodo={(body: string) => createTodo(body, todos, setTodos, setTodoBody)}
-                todos={curTodos}
-                todoBody={todoBody}
-                setTodoBody={setTodoBody}
+                todos={filteredTodos}
+            />
+            <TodosList
+                todos={filteredTodos}
+                setTodos={setTodos}
             />
             <Footer
-                setTodos={setTodos}
-                todos={todos}
-                selectedCategory={selectedCategory}
-                setSelectedCategory={setSelectedCategory}
+                filterStatus={filterStatus}
+                setFilterStatus={setFilterStatus}
             />
         </div>
     );

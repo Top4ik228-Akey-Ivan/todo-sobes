@@ -1,6 +1,5 @@
-.addTodo{
+.addTodo {
     height: 72px;
-    font-size: 32px;
 
     display: flex;
     align-items: center;
@@ -10,25 +9,98 @@
 
     background-color: white;
     border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    cursor: pointer;
 }
 
-.addTodoImg{
+.addTodoImg {
     width: 36px;
     height: 36px;
     background-image: url(../../assets/images/plus.png);
     background-size: cover;
     background-repeat: no-repeat;
+    opacity: .5;
+}
 
-    opacity: 0.2;
+.addTodoInput {
+    cursor: pointer;
+    font-size: 30px;
+    font-style: italic;
+    transition: .5s;
+    opacity: .2;
+}
+
+.addTodoInput:hover {
+    opacity: .8;
+}
+
+.modalBackdrop {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.2);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+}
+
+.modal {
+    width: 400px;
+    background-color: white;
+    padding: 16px;
+    border-radius: 10px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.modalInputs {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.modalInputs input {
+    padding: 10px 6px;
+    outline: none;
+    border: 2px solid rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+    font-size: 16px;
+    transition: .3s;
+}
+
+.modalInputs input:focus {
+    border: 2px solid rgba(255, 127, 80, 0.3);
+}
+
+.modalButtons {
+    display: flex;
+    justify-content: space-between;
+
+    margin-top: 16px;
+}
+
+.modalButtons button {
+    padding: 6px 10px;
+    border-radius: 4px;
+    font-weight: bold;
+    border: none;
     cursor: pointer;
 }
 
-.addTodoInput{
-    outline: none;
-    border: none;
+.addBtn{
+    color: rgb(14, 173, 14);
+}
+.cancelBtn{
+    color: rgb(244, 72, 72);
+}
 
-    font-size: 30px;
-    font-style: italic;
-    
-    opacity: 0.2;
+@media (max-width: 600px) {
+    .addTodoInput {
+        font-size: 24px;
+    }
 }
